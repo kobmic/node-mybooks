@@ -1,0 +1,19 @@
+<div class="sub">
+    <div class="itemlist">
+        <h3>Books ({{books.length}})</h3>
+
+        {{#books}}
+        <div class="list-item">
+            <a href="/books/{{_id}}">{{author}} - {{title}}</a>
+            <br>
+            <span class="average">{{count}} rating(s)</span>
+            <div class="rating" data-score="{{average}}"></div>
+        </div>
+        {{/books}}
+        <div style="clear:both;"></div>
+    </div>
+
+</div>
+
+
+

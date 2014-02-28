@@ -1,0 +1,167 @@
+<script type="text/javascript">
+    var aid =  {{book.aid}};
+    $(document).ready(function() {
+        $("#authorId").val(aid);
+        $("#authorId").megaselectlist({ animate: true, animateevent: "click" });
+    });
+
+</script>
+
+<h3>Update Book</h3>
+
+<div id="add-book-form">
+
+    <form name="input" action="/books/{{book._id}}" method="post" enctype="application/x-www-form-urlencoded">
+
+        <table>
+            <tr>
+                <td colspan="2"><label for="authorId">Author</label>
+                    <select id="authorId" name="authorId">
+                        <optgroup label="Authors A-F">
+                            {{#AFauthors}}
+                            <option value="{{_id}}" >{{first}} {{last}}</option>
+                            {{/AFauthors}}
+                        </optgroup>
+                        <optgroup label="Authors G-K">
+                            {{#GLauthors}}
+                            <option value="{{_id}}" >{{first}} {{last}}</option>
+                            {{/GLauthors}}
+                        </optgroup>
+                        <optgroup label="Authors L-R">
+                            {{#MRauthors}}
+                            <option value="{{_id}}" >{{first}} {{last}}</option>
+                            {{/MRauthors}}
+                        </optgroup>
+                        <optgroup label="Authors S-Z">
+                            {{#SZauthors}}
+                            <option value="{{_id}}" >{{first}} {{last}}</option>
+                            {{/SZauthors}}
+                        </optgroup>
+
+                    </select>
+                </td></tr>
+            <tr>
+                <td>Title</td>
+                <td><input type="text" name="title" size="80" value="{{book.title}}"/>
+                </td></tr>
+            <tr>
+                <td>Subtitle</td>
+                <td><input type="text" name="subtitle" size="80" value="{{book.sub}}"/>
+                </td></tr>
+            <tr>
+                <td>URL</td>
+                <td> <input type="text" name="url" size="80" value="{{book.url}}"/>
+                </td></tr>
+            <tr>
+                <td>ISBN-10</td>
+                <td><input type="text" name="isbn10" size="80" value="{{book.isbn10}}"/>
+                </td></tr>
+            <tr>
+                <td>ISBN-13</td>
+                <td><input type="text" name="isbn13" size="80" value="{{book.isbn13}}"/>
+                </td></tr>
+        </table>
+        <p>
+            <input type="submit" value="Update" />
+        </p>
+    </form>
+
+
+    <br>
+
+    <div class="ratings">
+        <h3>All Ratings</h3>
+
+        {{#book.ratings}}
+        <div class="rating-item">
+            <table><tr><td>
+                <div class="rating" data-score="{{rating}}"></div>
+        </td>
+        <td>
+            <div class="rating-metadata">
+              by {{_id}}
+            </div>
+        </td>
+        </tr>
+        </table>
+
+    </div>
+    {{/book.ratings}}
+
+     <br>
+     <h3>Your Rating</h3>
+     <div class="new-rating">
+        <form name="input" action="/books/{{book._id}}/ratings" method="post" enctype="application/x-www-form-urlencoded">
+        <div id="post-rating"></div>
+        <p>
+            <input type="submit" value="Submit or Update your rating" />
+        </p>
+        </form>
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $('#post-rating').raty({
+            path: '../vendor/img/',
+            onClick: function(score) {
+                $('#rating').val(score);
+            }
+        });
+    </script>
+
+    <br>
+    <h3>Add to my books</h3>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#endMonth").val(new Date().getMonth() + 1);
+            $("#endYear").val(new Date().getFullYear());
+            $("#endDate").monthpicker(callback);
+        });
+
+        function callback(data,$e) {
+            var year = data["year"];
+            var month = data["month"];
+            $("#endMonth").val(month);
+            $("#endYear").val(year);
+        }
+    </script>
+
+
+    {{#info}}
+    You read this book in <b> {{info.month}} {{info.year}}</b><br>
+    {{/info}}
+
+    {{^info}}
+    <div id="add-book-form">
+        <form name="input" action="/mybooks" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="bookId" value="{{book._id}}"/>
+        Finished reading:<br><br>
+        <div class="MonthPicker" id="endDate" title="Example 1">Month Picker v2</div>
+        <input type="hidden" id="endMonth" name="endMonth"/>
+        <input type="hidden" id="endYear" name="endYear"/>
+        <br><br>
+        <p>
+            <input type="submit" value="Update" />
+        </p>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#endMonth").val(new Date().getMonth() + 1);
+            $("#endYear").val(new Date().getFullYear());
+            $("#endDate").monthpicker(callback);
+        });
+
+        function callback(data,$e) {
+            var year = data["year"];
+            var month = data["month"];
+            $("#endMonth").val(month);
+            $("#endYear").val(year);
+        }
+    </script>
+    {{/info}}
+
+</div>
+

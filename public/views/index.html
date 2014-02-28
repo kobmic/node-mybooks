@@ -1,0 +1,33 @@
+<div class="sub">
+
+
+    <div id="form">
+        <form name="input" action="/home" method="get">
+            <b>Filter by Author: </b> <input type="text" name="authorname" value="{{authorname}}">
+            <b>Filter by Year: </b> <input type="text" name="year" value="{{year}}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    <div class="sub">
+        <div class="itemlist">
+            <h3>Books ({{books.length}})</h3>
+
+            {{#books}}
+            <div class="list-item">
+                <a href="/books/{{_id}}">{{author}} - {{title}}</a>
+                <br>
+                Read: {{date}}
+                <br>
+                <span class="average">{{count}} rating(s)</span>
+                <div class="rating" data-score="{{average}}"></div>
+            </div>
+            {{/books}}
+            <div style="clear:both;"></div>
+        </div>
+
+    </div>
+
+</div>
+

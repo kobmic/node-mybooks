@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#authorId").megaselectlist({ animate: true, animateevent: "click" });
+    });
+</script>
+
+<h3>Add Book</h3>
+
+<div id="add-book-form">
+
+    <form name="input" action="/books" method="post" enctype="application/x-www-form-urlencoded">
+
+    <table>
+        <tr>
+            <td colspan="2"><label for="authorId">Author</label>
+                <select id="authorId" name="authorId">
+                    <optgroup label="Authors A-F">
+                        {{#AFauthors}}
+                        <option value="{{_id}}" >{{first}} {{last}}</option>
+                        {{/AFauthors}}
+                    </optgroup>
+                    <optgroup label="Authors G-K">
+                        {{#GLauthors}}
+                        <option value="{{_id}}" >{{first}} {{last}}</option>
+                        {{/GLauthors}}
+                    </optgroup>
+                    <optgroup label="Authors L-R">
+                        {{#MRauthors}}
+                        <option value="{{_id}}" >{{first}} {{last}}</option>
+                        {{/MRauthors}}
+                    </optgroup>
+                    <optgroup label="Authors S-Z">
+                        {{#SZauthors}}
+                        <option value="{{_id}}" >{{first}} {{last}}</option>
+                        {{/SZauthors}}
+                    </optgroup>
+
+                </select>
+            </td></tr>
+        <tr>
+    <td>Title</td>
+    <td><input type="text" name="title" size="80" value=""/>
+    </td></tr>
+<tr>
+    <td>Subtitle</td>
+    <td><input type="text" name="subtitle" size="80" value=""/>
+    </td></tr>
+<tr>
+    <td>URL</td>
+    <td> <input type="text" name="url" size="80" value=""/>
+    </td></tr>
+<tr>
+    <td>ISBN-10</td>
+    <td><input type="text" name="isbn10" size="80" value=""/>
+    </td></tr>
+<tr>
+    <td>ISBN-13</td>
+    <td><input type="text" name="isbn13" size="80" value=""/>
+    </td></tr>
+</table>
+<p>
+    <input type="submit" value="Add" />
+</p>
+    </form>
+
+</div>
+
