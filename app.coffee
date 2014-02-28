@@ -17,9 +17,6 @@ module.exports = (initFn)->
         app.use express.logger({ format: 'short' })
         app.use express.errorHandler()
 
-    app.configure 'test', ->
-        app.use express.errorHandler()
-
     app.configure ->
         app.use(express.cookieParser())
         app.use(express.session({ secret: 'somesecret' }));
@@ -30,8 +27,7 @@ module.exports = (initFn)->
         app.set('views', __dirname + '/public/views')
         app.use(app.router)
 
-
-    app.configure ->
+        # use hogan express
         app.set 'view engine', 'html'
         app.engine 'html', require('hogan-express')
         app.set('layout', 'layout')

@@ -15,14 +15,12 @@ twitterData =
 
 
 module.exports = (app, static_route) ->
-    #static_route is the path the the application static resources
 
     ensureAuthenticated = (req, res, next) ->
         if (req.isAuthenticated())
             next()
         else
             res.redirect('/')
-
 
     lookupAuthors = (req, res, next) ->
         store.getAuthorMap (err, authorMap) ->
@@ -40,6 +38,7 @@ module.exports = (app, static_route) ->
                 req.bookMap = bookMap
                 next()
 
+    # uses id of authenticated user to get account info
     lookupAccount = (req, res, next) ->
         store.getAccount req.user, (err, account) ->
             if (err)
@@ -76,6 +75,8 @@ module.exports = (app, static_route) ->
         store.getAccount id, (err, account) ->
             done(err, account)
 
+    # Routes
+    #
     app.get '/auth/twitter', passport.authenticate('twitter'), (req, res) ->
         # The request will be redirected to Twitter for authentication, so this
         # function will not be called.
@@ -85,7 +86,6 @@ module.exports = (app, static_route) ->
     app.get '/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/' }), (req, res) ->
         console.log "it works!!"
         res.redirect('/home')
-
 
     app.get '/logout', (req, res) ->
         req.logout()
@@ -120,8 +120,6 @@ module.exports = (app, static_route) ->
             authorname: req.query.authorname
             year: req.query.year
             user: req.user
-
-
 
     app.get '/top', ensureAuthenticated, lookupAccount, lookupBooks, lookupAuthors, (req,res) ->
         toplistData = (book) ->
