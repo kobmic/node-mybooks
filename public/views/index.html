@@ -17,9 +17,7 @@
             {{#books}}
             <div class="list-item">
                 <a href="/books/{{_id}}">{{author}} - {{title}}</a>
-                <br>
-                Read: {{date}}
-                <br>
+                <br><span class="smallfont">Read: {{date}}</span><br>
                 <span class="average">{{count}} rating(s)</span>
                 <div class="rating" data-score="{{average}}"></div>
             </div>

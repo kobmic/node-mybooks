@@ -663,6 +663,10 @@ div #stats {
     font-size: 90%;
 }
 
+span .smallfont {
+    font-size: 80%;
+}
+
 
 /* MEGASELECTLIST
 *********************************************/
