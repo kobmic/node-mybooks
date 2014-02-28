@@ -1,7 +1,7 @@
 mongoose = require 'mongoose'
 
 module.exports.mongoUrl = mongoUrl = () ->
-    url = process.env.MONGO_URL || 'mongodb://localhost:27017/mybooks'
+    url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/mybooks'
     return url
 
 db = mongoose.createConnection(mongoUrl())

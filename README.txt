@@ -1,1 +1,1 @@
-Sample app node.js, express, mongoose, passport
+Sample app "mybooks" with node.js, express, mongoose, passport on heroku
