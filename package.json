@@ -8,10 +8,10 @@
         "testWatch":"./node_modules/mocha/bin/mocha  -R min -W"
     },
     "dependencies":{
-        "coffee-script":"1.7.1",
-        "async":"0.2.10",
+        "coffee-script":"1.9.3",
+        "async":"1.4.0",
         "express":"3.4.8",
-        "mongoose": "3.8.6",
+        "mongoose": "4.1.6",
         "hogan-express": "0.5.2",
         "underscore": "1.6.0",
         "passport": "0.2.0",
