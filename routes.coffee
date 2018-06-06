@@ -9,8 +9,8 @@ Store =  require('./store')
 store = new Store()
 
 twitterData =
-    consumerKey: process.env.TWITTER_ID,
-    consumerSecret: process.env.TWITTER_SECRET,
+    consumerKey: process.env.TWITTER_ID
+    consumerSecret: process.env.TWITTER_SECRET
     callbackURL: "http://my-books.herokuapp.com/auth/twitter/callback"
 
 

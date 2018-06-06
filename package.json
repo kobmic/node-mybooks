@@ -1,32 +1,36 @@
 {
-    "name":"node-mybook",
-    "version":"0.1.0",
-    "private":true,
-    "scripts":{
-        "start":"node server.js",
-        "test":"./node_modules/mocha/bin/mocha  -R spec",
-        "testWatch":"./node_modules/mocha/bin/mocha  -R min -W"
+    "name": "node-mybook",
+    "version": "0.2.0",
+    "private": true,
+    "scripts": {
+        "start": "node server.js",
+        "test": "./node_modules/mocha/bin/mocha  -R spec",
+        "testWatch": "./node_modules/mocha/bin/mocha  -R min -W"
     },
-    "dependencies":{
-        "coffee-script":"1.9.3",
-        "async":"1.4.0",
-        "express":"3.4.8",
-        "mongoose": "4.1.6",
+    "dependencies": {
+        "async": "2.6.1",
+        "body-parser": "1.18.2",
+        "coffee-script": "1.12.7",
+        "cookie-parser": "1.4.3",
+        "express": "4.16.3",
+        "express-session": "1.15.6",
         "hogan-express": "0.5.2",
-        "underscore": "1.6.0",
-        "passport": "0.2.0",
-        "passport-twitter": "1.0.2"
+        "morgan": "1.9.0",
+        "mongoose": "5.1.2",
+        "raw-body": "2.3.2",
+        "underscore": "*",
+        "passport": "0.4.0",
+        "passport-twitter": "1.0.4"
     },
-    "devDependencies":{
-        "nock":"*",
-        "sinon":"*",
-        "mocha":"*",
-        "chai":"*",
-        "coffee-coverage":"*",
-        "supertest":"*"
+    "devDependencies": {
+        "nock": "*",
+        "sinon": "*",
+        "mocha": "*",
+        "chai": "*",
+        "coffee-coverage": "*",
+        "supertest": "*"
     },
-
-    "engines":{
-        "node":"0.10.x"
+    "engines": {
+        "node": "8.1.4"
     }
 }
