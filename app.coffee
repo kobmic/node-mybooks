@@ -2,7 +2,6 @@ express = require 'express'
 path = require 'path'
 passport = require 'passport'
 
-getRawBody = require 'raw-body'
 
 logger = require 'morgan'
 cookieParser = require 'cookie-parser'
@@ -16,16 +15,6 @@ module.exports = (initFn)->
     module.exports.static_route
 
     app.set('port', process.env.PORT || 8080);
-
-    app.use (req, res, next) =>
-        options =
-            length: req.headers['content-length'],
-            limit: '1mb',
-        getRawBody req, options, (err, string) =>
-            if (err)
-                return next(err)
-            req.text = string
-            next()
 
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: false }))
