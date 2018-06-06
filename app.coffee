@@ -9,7 +9,6 @@ cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 session = require 'express-session'
 
-
 module.exports = (initFn)->
     app = express()
     env = process.env.NODE_ENV || 'development'
@@ -59,6 +58,3 @@ module.exports = (initFn)->
         server = http.createServer app
         server.listen app.get('port'), initFn
     app
-
-
-    
