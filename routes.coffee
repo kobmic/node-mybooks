@@ -50,7 +50,9 @@ module.exports = (app, static_route) ->
     booklistData = (book, authorMap) ->
         count = if (book.ratings) then book.ratings.length else 0
         ratingVals = book.ratings.map (item) -> item.rating
-        sum = ratingVals.reduce (a,b) -> a + b
+        sum = 0
+        if ratingVals.length > 0
+            sum = ratingVals.reduce (a,b) -> a + b
         average = if (count > 0) then (sum / count) else 0
         {_id: book._id, title: book.title, sub: book.sub, author: authorMap[book.aid], count: count, average: average}
 
