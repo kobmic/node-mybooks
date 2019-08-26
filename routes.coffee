@@ -98,7 +98,8 @@ module.exports = (app, static_route) ->
 
     app.get '/home', ensureAuthenticated, lookupAccount, lookupBooks, lookupAuthors,  (req,res) ->
 
-        myBooks = req.account.mybooks
+        myBooks = req.account.mybooks.filter (item) ->
+            item?
 
         if (req.query.year)
             myBooks = req.account.mybooks.filter (item) ->
