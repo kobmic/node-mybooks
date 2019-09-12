@@ -107,7 +107,10 @@ module.exports = (app, static_route) ->
 
         getBooklistData = (book) -> booklistData(book, req.authorMap)
 
-
+        list = list.filter (item) ->
+            book = req.bookMap[item._id]
+            book?
+            
         list = myBooks.map (item) ->
             book = req.bookMap[item._id]
             rich = getBooklistData(book)
