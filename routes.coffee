@@ -100,6 +100,10 @@ module.exports = (app, static_route) ->
 
         myBooks = req.account.mybooks.filter (item) ->
             item?
+        
+        myBooks = myBooks.filter (item) ->
+            book = req.bookMap[item._id]
+            book?    
 
         if (req.query.year)
             myBooks = req.account.mybooks.filter (item) ->
@@ -107,10 +111,6 @@ module.exports = (app, static_route) ->
 
         getBooklistData = (book) -> booklistData(book, req.authorMap)
 
-        list = list.filter (item) ->
-            book = req.bookMap[item._id]
-            book?
-            
         list = myBooks.map (item) ->
             book = req.bookMap[item._id]
             rich = getBooklistData(book)
