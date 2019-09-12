@@ -57,7 +57,7 @@ module.exports = (app, static_route) ->
             average = if (count > 0) then (sum / count) else 0
             {_id: book._id, title: book.title, sub: book.sub, author: authorMap[book.aid], count: count, average: average}
          else   
-            {_id: book._id, title: book.title, sub: book.sub, author: authorMap[book.aid], count: 0, average: 0}
+            {_id: -1, title: "undefined", sub: "undefined", author: "undefined", count: 0, average: 0}
 
     passport.use new TwitterStrategy(twitterData, (token, tokenSecret, profile, done) ->
         account =
