@@ -15,7 +15,7 @@
         "express": "4.16.3",
         "express-session": "1.15.6",
         "hogan-express": "0.5.2",
-        "morgan": "1.9.0",
+        "morgan": "1.9.1",
         "mongoose": "5.7.7",
         "raw-body": "2.3.2",
         "underscore": "*",
